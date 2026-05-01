@@ -1,8 +1,3 @@
-The reason they are "broken" is likely because the href="#id" links are trying to jump to sections that don't have enough vertical space to move, or the smooth-scroll script is fighting with the browser's default behavior.
-
-I've fixed the navigation logic, added a subtle hover effect to the buttons so they don't look like basic blue hyperlinks, and ensured the "Active" section highlights.
-
-HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -97,6 +92,35 @@ HTML
             line-height: 1.6;
         }
 
+        .invite-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background-color: var(--accent-blue);
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            padding: 16px 40px;
+            border-radius: 50px; /* Makes it a long oval */
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 153, 255, 0.3);
+        }
+
+        .invite-btn:hover {
+            box-shadow: 0 0 25px rgba(0, 153, 255, 0.9);
+            transform: translateY(-2px);
+            background-color: #2db3ff; /* Slightly lighter blue for interaction */
+        }
+
+        .invite-btn svg {
+            width: 26px;
+            height: 26px;
+            fill: #fff;
+        }
+
         .content-section {
             min-height: 100vh;
             display: flex;
@@ -115,6 +139,7 @@ HTML
             border-radius: 15px;
             border-left: 5px solid var(--accent-blue);
             box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            animation: fadeInUp 0.8s ease-out;
         }
 
         h2 {
@@ -147,19 +172,9 @@ HTML
             scroll-snap-align: end;
         }
 
-        .container {
-            animation: fadeInUp 0.8s ease-out;
-        }
-
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-10px);}
-            60% {transform: translateY(-5px);}
         }
     </style>
 </head>
@@ -174,9 +189,14 @@ HTML
     <section class="hero" id="home">
         <img src="S.png" alt="Swish Logo" class="hero-logo">
         <p>Swish is a basketball card game bot with many ways to play! From matches against AI to a park and ranked system with matchmaking across all servers all playable in 1v1, 3v3 or 5v5, Swish has it all!</p>
-        <div style="margin-top: 30px; color: #fff; font-weight: bold; font-size: 0.75rem; letter-spacing: 4px; animation: bounce 2s infinite; opacity: 0.8;">
-            SCROLL TO VIEW LEGAL ↓
-        </div>
+        
+        <!-- Invite Button -->
+        <a href="https://discord.com/oauth2/authorize?client_id=1448415997525495808" class="invite-btn" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.14 96.36">
+                <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.31,60,73.31,53s5-12.74,11.43-12.74S96.31,46,96.2,53,91.08,65.69,84.69,65.69Z"/>
+            </svg>
+            Invite To Server
+        </a>
     </section>
 
     <section class="content-section" id="privacy">
